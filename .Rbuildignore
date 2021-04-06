@@ -1,2 +1,4 @@
+^renv$
+^renv\.lock$
 ^DSTheme\.Rproj$
 ^\.Rproj\.user$

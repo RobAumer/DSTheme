@@ -1,13 +1,13 @@
 Package: DSTheme
-Title: What the Package Does (One Line, Title Case)
+Title: A Unified Theme for ggplot2 Plots and gt Tables
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Rob",
+           family = "Aumer",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "robert.aumer@gmail.com")
+Description: The DSTheme package contains a styled theme for ggplot2 plots, and 
+matching styling for nice looking gt tables. Requires the Fira-Code font.
+License: No License
 Encoding: UTF-8
 LazyData: true

@@ -10,3 +10,6 @@ Description: The DSTheme package contains a styled theme for ggplot2 plots, and 
 License: No License
 Encoding: UTF-8
 LazyData: true
+Imports:
+    ggplot2,
+    scales

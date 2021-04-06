@@ -1,78 +1,80 @@
+#' Function to implement a data science theme for ggplot2
+#'
+#' @usage theme_DS()
+#' @param ... additional parameters
+#' @export
 theme_DS <- function(font_family = "Fira Code"){
-  
+
   black = "#000000"
   # Begin construction of chart. Build from the black + white theme
-  
-  theme_bw(base_size=12, base_family = font_family) + 
-    
+
+  ggplot2::theme_bw(base_size=12, base_family = font_family) +
+
     # Title
-    theme(plot.title = element_text(color = black,
-                                       size = 16,
-                                       vjust= 1.25,
-                                       hjust = 0.5)) +
-    
+    ggplot2::theme(plot.title = ggplot2::element_text(color = black,
+                                                      size = 16,
+                                                      vjust= 1.25,
+                                                      hjust = 0.5)) +
+
     # Subtitle
-    theme(plot.subtitle = element_text(color = black,
-                                       size = 12,
-                                       vjust= 1.25,
-                                       hjust = 0.5)) +
-    
+    ggplot2::theme(plot.subtitle = ggplot2::element_text(color = black,
+                                                         size = 12,
+                                                         vjust= 1.25,
+                                                         hjust = 0.5)) +
+
     # X-axis
-    theme(axis.text.x=element_text(size = 8,
-                                   color = black)) +
-    theme(axis.title.x=element_text(size = 10,
-                                    color = black,
-                                    vjust = 0)) +
-    
+    ggplot2::theme(axis.text.x = ggplot2::element_text(size = 8,
+                                                       color = black)) +
+    ggplot2::theme(axis.title.x = ggplot2::element_text(size = 10,
+                                                        color = black,
+                                                        vjust = 0)) +
+
     # Y-axis
-    theme(axis.text.y=element_text(size = 8,
-                                   color = black)
+    ggplot2::theme(axis.text.y = ggplot2::element_text(size = 8,
+                                                       color = black)
     ) +
-    
-    theme(axis.title.y=element_text(size =10,
-                                    color = black,
-                                    vjust = 1.25)) +
-    
+
+    ggplot2::theme(axis.title.y = ggplot2::element_text(size =10,
+                                                        color = black,
+                                                        vjust = 1.25)) +
+
     # Plot panel (just the grided part)
-    theme(panel.background = element_rect(fill = "transparent",
-                                          color = "transparent")) +
-    theme(panel.border = element_rect(color = "transparent")) +
-    
+    ggplot2::theme(panel.background = ggplot2::element_rect(fill = "transparent",
+                                                            color = "transparent")) +
+    ggplot2::theme(panel.border = ggplot2::element_rect(color = "transparent")) +
+
     # Plot Background (entire frame)
-    theme(legend.key = element_rect(fill = "transparent")) +
-    
-    theme(plot.background = element_rect(fill = "transparent",
-                                         color = "transparent")) +
-    
+    ggplot2::theme(legend.key = ggplot2::element_rect(fill = "transparent")) +
+
+    ggplot2::theme(plot.background = ggplot2::element_rect(fill = "transparent",
+                                                           color = "transparent")) +
+
     # Format the grid
-    theme(panel.grid.major=element_line(color = DS_colors[["dark grey"]],
-                                        size = 0.25)) +
-    theme(panel.grid.minor = element_blank()) +
-    theme(axis.ticks = element_blank()) +
-    
+    ggplot2::theme(panel.grid.major = ggplot2::element_line(color = DS_colors[["dark grey"]],
+                                                            size = 0.25)) +
+    ggplot2::theme(panel.grid.minor = ggplot2::element_blank()) +
+    ggplot2::theme(axis.ticks = ggplot2::element_blank()) +
+
     # Format the legend
-    theme(legend.background = element_rect(fill = "transparent",
-                                           color = "transparent",
-                                           size = 0.25)) +
-    theme(legend.text = element_text(size = 8,
-                                     color = black),
-          legend.title = element_text(size = 10,
-                                      color = black)) +
-    
+    ggplot2::theme(legend.background = ggplot2::element_rect(fill = "transparent",
+                                                             color = "transparent",
+                                                             size = 0.25)) +
+    ggplot2::theme(legend.text = ggplot2::element_text(size = 8,
+                                                       color = black),
+                   legend.title = ggplot2::element_text(size = 10,
+                                                        color = black)) +
+
     # Facet strips
-    theme(strip.background = element_rect(fill = DS_colors[["light grey"]],
-                                          # color = "transparent"
-    ),
-    strip.text = element_text(color = black,
-                              size = 10),
-    strip.text.y = element_text(angle = -90)
-    
-    ) +
-    
+    ggplot2::theme(strip.background = ggplot2::element_rect(fill = DS_colors[["light grey"]]),
+                   strip.text = ggplot2::element_text(color = black, size = 10),
+                   strip.text.y = ggplot2::element_text(angle = -90)) +
+
     # Plot margins
-    theme(plot.margin = unit(c(0.35, 0.2, 0.3, 0.35), "cm"))
+    ggplot2::theme(plot.margin = ggplot2::unit(c(0.35, 0.2, 0.3, 0.35), "cm"))
 }
 
+#' List of DStheme colors
+#'
 DS_colors <- c(
   `red`        = "#d11141",
   `green`      = "#00b159",
@@ -84,26 +86,26 @@ DS_colors <- c(
 
 #' Function to extract DS colors as hex codes
 #'
-#' @param ... Character names of DS_colors 
+#' @param ... Character names of DS_colors
 #'
 DS_cols <- function(...) {
   cols <- c(...)
-  
+
   if (is.null(cols))
     return (DS_colors)
-  
+
   DS_colors[cols]
 }
 
 DS_palettes <- list(
   `main`  = DS_cols("blue", "green", "yellow"),
-  
+
   `cool`  = DS_cols("blue", "green"),
-  
+
   `hot`   = DS_cols("yellow", "orange", "red"),
-  
+
   `mixed` = DS_cols("blue", "green", "yellow", "orange", "red"),
-  
+
   `grey`  = DS_cols("light grey", "dark grey")
 )
 
@@ -115,10 +117,10 @@ DS_palettes <- list(
 #'
 DS_pal <- function(palette = "main", reverse = FALSE, ...) {
   pal <- DS_palettes[[palette]]
-  
+
   if (reverse) pal <- rev(pal)
-  
-  colorRampPalette(pal, ...)
+
+  grDevices::colorRampPalette(pal, ...)
 }
 
 #' Color scale constructor for DS colors
@@ -131,11 +133,11 @@ DS_pal <- function(palette = "main", reverse = FALSE, ...) {
 #'
 scale_color_DS <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- DS_pal(palette = palette, reverse = reverse)
-  
+
   if (discrete) {
-    discrete_scale("colour", paste0("DS_", palette), palette = pal, ...)
+    ggplot2::discrete_scale("colour", paste0("DS_", palette), palette = pal, ...)
   } else {
-    scale_color_gradientn(colours = pal(256), ...)
+    ggplot2::scale_color_gradientn(colours = pal(256), ...)
   }
 }
 
@@ -149,10 +151,10 @@ scale_color_DS <- function(palette = "main", discrete = TRUE, reverse = FALSE, .
 #'
 scale_fill_DS <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- DS_pal(palette = palette, reverse = reverse)
-  
+
   if (discrete) {
-    discrete_scale("fill", paste0("DS_", palette), palette = pal, ...)
+    ggplot2::discrete_scale("fill", paste0("DS_", palette), palette = pal, ...)
   } else {
-    scale_fill_gradientn(colours = pal(256), ...)
+    ggplot2::scale_fill_gradientn(colours = pal(256), ...)
   }
 }
